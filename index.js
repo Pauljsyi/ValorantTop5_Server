@@ -39,12 +39,8 @@ let valorant = app.get("/", async function (req, res) {
   // });
 
   // ====== AXIOS ===== //
-  // let data = { test: "Test" };
 
   let response = await axios.get(url).then((res) => {
-    // console.log(res.data);
-    // res.data;
-    // return res.json(res.data);
     return res.data;
   });
   // console.log(response.players);
