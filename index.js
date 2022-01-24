@@ -2,6 +2,7 @@ const express = require("express");
 const port = process.env.port || 5000;
 const bodyParser = require("body-parser");
 const https = require("https");
+const axios = require("axios");
 // const path = require("path");
 // const cors = require("cors");
 require("dotenv").config();
@@ -19,21 +20,35 @@ const app = express();
 // app.use(express.static(path.join(__dirname, "/../client/dist")));
 // app.use("/", router);
 
-let valorant = app.get("/", function (req, res) {
+let valorant = app.get("/", async function (req, res) {
   const url = `https://na.api.riotgames.com/val/ranked/v1/leaderboards/by-act/${actId}?size=5&startIndex=0&api_key=${api}`;
   // const url = "https://valorant-api.com/v1/agents";
-  // console.log(url);
+  console.log(url);
 
-  https.get(url, function (response) {
-    // console.log("RESPONSE", response);
-    response.on("data", function (val) {
-      const valData = JSON.parse(val);
+  // ===== HTTPS ======= //
 
-      console.log(valData.players);
-      res.write("Valorant API works!");
-      res.send();
-    });
+  // https.get(url, function (response) {
+  //   // console.log("RESPONSE", response);
+  //   response.on("data", function (val) {
+  //     const valData = JSON.parse(val);
+
+  //     // console.log(valData.players);
+  //     // res.write("hello" + valData.players);
+  //     res.send();
+  //   });
+  // });
+
+  // ====== AXIOS ===== //
+  // let data = { test: "Test" };
+
+  let response = await axios.get(url).then((res) => {
+    // console.log(res.data);
+    // res.data;
+    // return res.json(res.data);
+    return res.data;
   });
+  // console.log(response.players);
+  return res.status(200).json(response);
 });
 
 app.listen(port, () => {
