@@ -7,7 +7,6 @@ require("dotenv").config();
 
 let api = process.env.RIOT_API;
 let actId1 = process.env.ACT_ID_ONE;
-console.log(actId1);
 
 const app = express();
 
@@ -19,6 +18,7 @@ let valorant = app.get("/", async function (req, res) {
   let response = await axios
     .get(url)
     .then((res) => {
+      console.log("response sent!");
       return res.data;
     })
     .catch((e) => {
