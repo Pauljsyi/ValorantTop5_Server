@@ -13,6 +13,8 @@ const app = express();
 let valorant = app.get("/", async function (req, res) {
   const url = `https://na.api.riotgames.com/val/ranked/v1/leaderboards/by-act/${actId1}?size=5&startIndex=0&api_key=${api}`;
 
+  res.send("Valorant API Working!");
+
   // ====== AXIOS ===== //
 
   let response = await axios
