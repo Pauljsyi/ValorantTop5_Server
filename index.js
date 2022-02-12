@@ -1,5 +1,5 @@
 const express = require("express");
-const port = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 const axios = require("axios");
 require("dotenv").config();
 
@@ -22,5 +22,5 @@ app.get("/", async function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  console.log(`Server is listening on port ${PORT}`);
 });
