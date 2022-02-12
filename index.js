@@ -30,5 +30,5 @@ let valorant = app.get("/", async function (req, res) {
 });
 
 app.listen(port, () => {
-  console.log(`Server is listening of port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });
