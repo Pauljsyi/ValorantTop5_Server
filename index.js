@@ -7,6 +7,10 @@ const URL = `https://na.api.riotgames.com/val/ranked/v1/leaderboards/by-act/${pr
 
 const app = express();
 
+/**
+ * Queries the valerant server
+ * @return player information
+ */
 app.get("/", async function (req, res) {
   await res.send("Valorant API Working!");
 
@@ -21,6 +25,6 @@ app.get("/", async function (req, res) {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on PORT ${PORT}`);
 });
